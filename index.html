@@ -124,13 +124,13 @@
             qn.innerText = "But I still love you 🥺";
         }
     };
-    function happy(){
-
+    function happy() {
     sadbutton.style.display = "none";
     happie.style.display = "none";
-    
-    // First image: happy face, no animation
-    image.classList.remove("fade-in");
+
+    // Immediately show happy image (NO fade)
+    image.classList.remove("fade-in"); // Remove if it was previously added
+    void image.offsetWidth; // Force reflow to clear animation completely
     image.src = "happy.png";
     qn.innerText = "Cuddles incoming in 3...";
 
@@ -145,11 +145,11 @@
     setTimeout(function () {
         qn.innerText = "CUDDLE ATTACK!!! 🐾💖";
 
-        // Final image: puppy cuddling with fade-in
-        image.classList.remove("fade-in"); // reset any existing animation
-        void image.offsetWidth; // force reflow to restart animation
+        // Only fade in this final cuddle image
+        image.classList.remove("fade-in");
+        void image.offsetWidth; // Reflow to reset animation
         image.src = "cuddle.png";
-        image.classList.add("fade-in"); // only fade-in the final image
+        image.classList.add("fade-in");
     }, 3000);
 };
 </script>
