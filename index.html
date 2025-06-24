@@ -65,7 +65,7 @@
 }
 
 .fade-in {
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 1.2s ease-in-out;
 }
 
 </style>
@@ -122,7 +122,10 @@
     function happy(){
 
     sadbutton.style.display = "none";
-    happie.style.display="none"
+    happie.style.display = "none";
+    
+    // First image: happy face, no animation
+    image.classList.remove("fade-in");
     image.src = "happy.png";
     qn.innerText = "Cuddles incoming in 3...";
 
@@ -136,14 +139,14 @@
 
     setTimeout(function () {
         qn.innerText = "CUDDLE ATTACK!!! 🐾💖";
-        image.src = "cuddle.png"; 
 
-       
-         image.classList.remove("fade-in");
-    void image.offsetWidth; // force reflow
-    image.classList.add("fade-in");
-}, 3000);
-    };
+        // Final image: puppy cuddling with fade-in
+        image.classList.remove("fade-in"); // reset any existing animation
+        void image.offsetWidth; // force reflow to restart animation
+        image.src = "cuddle.png";
+        image.classList.add("fade-in"); // only fade-in the final image
+    }, 3000);
+};
 </script>
 </body>
 </html> 
